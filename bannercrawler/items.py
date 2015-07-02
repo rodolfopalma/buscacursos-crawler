@@ -8,7 +8,10 @@
 import scrapy
 
 
-class BannercrawlerItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class Curso(scrapy.Item):
+    nombre = scrapy.Field()
+    nrc = scrapy.Field()
+    seccion = scrapy.Field()
+    profesor = scrapy.Field()
+    horarios = scrapy.Field()
+    creditos = scrapy.Field()
