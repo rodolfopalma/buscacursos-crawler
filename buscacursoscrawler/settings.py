@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for bannercrawler project
+# Scrapy settings for buscacursoscrawler project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +9,14 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'bannercrawler'
+BOT_NAME = 'buscacursoscrawler'
 
-SPIDER_MODULES = ['bannercrawler.spiders']
-NEWSPIDER_MODULE = 'bannercrawler.spiders'
+SPIDER_MODULES = ['buscacursoscrawler.spiders']
+NEWSPIDER_MODULE = 'buscacursoscrawler.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'bannercrawler (+http://www.yourdomain.com)'
+#USER_AGENT = 'buscacursoscrawler (+http://www.yourdomain.com)'
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS=32
@@ -44,13 +44,13 @@ NEWSPIDER_MODULE = 'bannercrawler.spiders'
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'bannercrawler.middlewares.MyCustomSpiderMiddleware': 543,
+#    'buscacursoscrawler.middlewares.MyCustomSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'bannercrawler.middlewares.MyCustomDownloaderMiddleware': 543,
+#    'buscacursoscrawler.middlewares.MyCustomDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -62,7 +62,7 @@ NEWSPIDER_MODULE = 'bannercrawler.spiders'
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'bannercrawler.pipelines.SomePipeline': 300,
+#    'buscacursoscrawler.pipelines.SomePipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)

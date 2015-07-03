@@ -1,7 +1,7 @@
 #!/usr/local/bin python
 # -*- encoding: utf-8 -*-
 import scrapy
-from bannercrawler.items import Curso
+from buscacursoscrawler.items import Curso
 from collections import defaultdict
 
 
