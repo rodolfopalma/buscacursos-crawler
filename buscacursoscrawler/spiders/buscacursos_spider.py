@@ -12,7 +12,7 @@ class BuscacursosSpider(scrapy.Spider):
     # Selectores
     # TODO: Optimizar selectores
     campus_selector = "form[name='cxml_buscador_form'] " + \
-            "select[name='cxml_campus'] option"
+        "select[name='cxml_unidad_academica'] option"
     course_selector = "div.centro > div > table tr[class^='resultadosRow']"
     semester = "2015-2"
 
@@ -20,16 +20,16 @@ class BuscacursosSpider(scrapy.Spider):
         options = resp.css(self.campus_selector)
         options.pop(0)
 
-        for campus in options:
+        for ua in options:
             yield scrapy.FormRequest(
-                    # TODO: Averiguar si hay alguna forma mejor de hacer esto
-                    # con scrapy.
-                    url=self.start_urls[0] + \
-                            "?cxml_semestre={}&cxml_campus={}".format(
-                                self.semester,
-                                str(campus.xpath("@value").extract()[0])
-                                ),
-                    callback=self.parse_each_campus_page
+                # TODO: Averiguar si hay alguna forma mejor de hacer esto
+                # con scrapy.
+                url=self.start_urls[0] +
+                "?cxml_semestre={}&cxml_unidad_academica={}".format(
+                    self.semester,
+                    ua.xpath("@value").extract()[0].encode("utf-8")
+                ),
+                callback=self.parse_each_campus_page
             )
 
     def parse_each_campus_page(self, resp):
@@ -39,7 +39,7 @@ class BuscacursosSpider(scrapy.Spider):
             yield self.parse_each_course(course)
 
     def parse_each_course(self, courseElement):
-        tds = courseElement.xpath("td") 
+        tds = courseElement.xpath("td")
 
         # NRC
         nrc = int(tds[0].xpath("text()").extract()[0])
@@ -73,7 +73,6 @@ class BuscacursosSpider(scrapy.Spider):
 
         return course
 
-
     def parse_schedule(self, data):
         trs = data.css("tr")
         schedule = defaultdict(list)
@@ -82,7 +81,7 @@ class BuscacursosSpider(scrapy.Spider):
             tds = tr.xpath("td")
             type_ = tds[1].xpath("text()").extract()[0].encode("utf-8")
             days, modules = (tds[0].xpath("text()").extract()[0]
-                    .encode("utf-8").split(":"))
+                             .encode("utf-8").split(":"))
             days = days.split("-")
             modules = modules.split(",")
 
