@@ -57,7 +57,7 @@ class BuscacursosSpider(scrapy.Spider):
             teacher = "Sin profesores"
 
         # Creditos
-        credits = tds[10].xpath("text()").extract()[0].encode("utf-8")
+        credits = int(tds[10].xpath("text()").extract()[0].encode("utf-8"))
 
         # Horario, la parte más *compleja*
         schedule = self.parse_schedule(tds[6])
